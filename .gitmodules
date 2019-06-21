@@ -1,0 +1,3 @@
+[submodule "IdentityServer4"]
+	path = IdentityServer4
+	url = https://github.com/Bestlasas/IdentityServer4.git
