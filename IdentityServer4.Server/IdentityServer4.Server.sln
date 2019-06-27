@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.Dapper.Stor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.Dapper", "..\IdentityServer4\src\Dapper\src\IdentityServer4.Dapper.csproj", "{53326F30-9D5D-486F-A5C7-DD39586F2F20}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jupiter.Helpers", "..\..\Helpers\Helpers\Jupiter.Helpers.csproj", "{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,18 @@ Global
 		{53326F30-9D5D-486F-A5C7-DD39586F2F20}.Release|x64.Build.0 = Release|Any CPU
 		{53326F30-9D5D-486F-A5C7-DD39586F2F20}.Release|x86.ActiveCfg = Release|Any CPU
 		{53326F30-9D5D-486F-A5C7-DD39586F2F20}.Release|x86.Build.0 = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|x64.Build.0 = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Debug|x86.Build.0 = Debug|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|x64.ActiveCfg = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|x64.Build.0 = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|x86.ActiveCfg = Release|Any CPU
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +124,7 @@ Global
 		{C40B52F4-F10A-4E4A-AE70-43DBB33A6F0F} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
 		{77F642EE-9B1A-466A-890F-D8891468D4D1} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
 		{53326F30-9D5D-486F-A5C7-DD39586F2F20} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
+		{14492600-BBC4-46B9-AE15-7FF3BBDC2D0A} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84D5AF06-1243-46F1-9D58-70ED572832C3}
