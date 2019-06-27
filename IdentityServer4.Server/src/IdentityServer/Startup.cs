@@ -1,5 +1,6 @@
 ﻿using IdentityServer.Data;
 using IdentityServer.Models;
+using Jupiter.Helpers.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -28,7 +29,7 @@ namespace IdentityServer
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 
-            const string connectionString = @"Server=DESKTOP-MHQGAEU\MSSQLSERVERLOCAL;Database=Test;User ID=sa;Password=123456789";
+            const string connectionString = @"Server=jupiterdb.cxalkxfdw2sv.sa-east-1.rds.amazonaws.com;Database=JupiterDB;User ID=admin;Password=Holamundo2018";
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -37,7 +38,7 @@ namespace IdentityServer
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            services.AddConfigurationDapperStorage<DapperMSSQLAdapter>(Configuration.GetSection("DapperIdentity"));
             var builder = services.AddIdentityServer()
                 //.AddTestUsers(Config.GetUsers())
                 // this adds the config data from DB (clients, resources)
