@@ -15,6 +15,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\IdentityServer4\src\AspNetIdentity\src\IdentityServer4.AspNetIdentity.csproj" />
-    <ProjectReference Include="..\..\..\IdentityServer4\src\EntityFramework\src\IdentityServer4.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\..\IdentityServer4\src\Dapper.Storage\src\IdentityServer4.Dapper.Storage.csproj" />
+    <ProjectReference Include="..\..\..\IdentityServer4\src\Dapper\src\IdentityServer4.Dapper.csproj" />
   </ItemGroup>
 </Project>

@@ -1,22 +1,13 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using System;
-using System.Linq;
-using System.Reflection;
-using IdentityServer.Data;
+﻿using IdentityServer.Data;
 using IdentityServer.Models;
-using IdentityServer4;
-using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Reflection;
 
 namespace IdentityServer
 {
@@ -75,37 +66,10 @@ namespace IdentityServer
             {
                 throw new Exception("need to configure key material");
             }
-
-            services.AddAuthentication()
-                .AddGoogle("Google", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-                    options.ClientId = "<insert here>";
-                    options.ClientSecret = "<insert here>";
-                })
-                .AddOpenIdConnect("oidc", "OpenID Connect", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "implicit";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
-                });
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            // this will do the initial DB population
-            InitializeDatabase(app);
-
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -114,46 +78,7 @@ namespace IdentityServer
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseIdentityServer();
-
             app.UseMvcWithDefaultRoute();
         }
-
-        private void InitializeDatabase(IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
-                if (!context.Clients.Any())
-                {
-                    foreach (var client in Config.GetClients())
-                    {
-                        context.Clients.Add(client.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Config.GetIdentityResources())
-                    {
-                        context.IdentityResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.ApiResources.Any())
-                {
-                    foreach (var resource in Config.GetApis())
-                    {
-                        context.ApiResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-            }
-        }
-
     }
 }
